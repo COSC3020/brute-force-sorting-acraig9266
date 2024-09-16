@@ -1,3 +1,5 @@
 function permutationSort(a) {
-    return 0;
+    
+    
+    return a;
 }

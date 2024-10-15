@@ -1,39 +1,35 @@
-function permutationSort(a) {
-    if (isSorted(a)){
-        return 1;
-    }
-    permCount = 1;
-    n = a.length;
-    c = new Array(n);
-        for (i = 0; i < n; i++){
-            c[i] = 0;
-        }
-        i = 0;
-        while (i < n){
-            permCount += 1;
-            if (c[i] < i){
-                if(i % 2){
-                    swap(a[0], a[i]);
-                } else {
-                    swap(a[c[i]], a[i]);
-                }
-                c[i]++;
-                i = 1; 
-            } else {
-                c[i] = 0;
-                i++;
-            }
-            if(isSorted(a) == true){
-                break;
-            }
-        }
-        
-    return permCount;
+function swap(arr, i, j) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
 }
 
-function isSorted(array){
-    for(i = 0; i < array.length; i++){
-        if (array[i] > array[i + 1]){
+function permutationSort(arr) {
+    perms = 1;
+    const n = arr.length;
+    const c = new Array(n).fill(0); // Control array initialized to 0
+
+    let i = 0;
+    while (i < n) {
+        if (c[i] < i) {
+            swap(arr, (i % 2 === 0) ? 0 : c[i], i); // Swap based on i's parity
+            c[i]++;
+            i = 0; // Reset index
+        } else {
+            c[i] = 0;
+            i++; // Move to the next index
+        }
+        if (!isSorted(arr) && i % 2) {
+            perms += 1;
+        }
+        if (isSorted(arr)) {
+            return perms;
+        }
+    }
+    return perms;
+}
+
+function isSorted(array) {
+    for (i = 0; i < array.length; i++) {
+        if (array[i] > array[i + 1]) {
             return false;
         }
     }

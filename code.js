@@ -1,6 +1,10 @@
 function permutationSort(a) {
-    permCount = 0;
+    if (isSorted(a)){
+        return 1;
+    }
+    permCount = 1;
     n = a.length;
+    c = new Array(n);
         for (i = 0; i < n; i++){
             c[i] = 0;
         }

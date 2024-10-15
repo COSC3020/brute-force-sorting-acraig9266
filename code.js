@@ -13,7 +13,7 @@ function permutationSort(arr) {
             c[i]++;
             i = 1; // Reset index
             perms++;
-            if (isSorted(arr)) {
+            if (isSorted(arr)) { // Moved count and check into if statement so only increments and checks when new permutation is actually made
             return perms;
         }
         } else {

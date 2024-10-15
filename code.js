@@ -1,5 +1,6 @@
 function permutationSort(a) {
     permCount = 0;
+    n = a.length;
         for (i = 0; i < n; i++){
             c[i] = 0;
         }

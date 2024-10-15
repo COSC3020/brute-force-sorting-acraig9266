@@ -8,17 +8,17 @@ function permutationSort(arr) {
     const c = new Array(n).fill(0); // Control array initialized to 0
     let i = 0;
     while (i < n) {
-        perms++;
         if (c[i] < i) {
             swap(arr, (i % 2 === 0) ? 0 : c[i], i); // Swap based on i's parity
             c[i]++;
             i = 1; // Reset index
+            perms++;
+            if (isSorted(arr)) {
+            return perms;
+        }
         } else {
             c[i] = 0;
             i++; // Move to the next index
-        }
-        if (isSorted(arr)) {
-            return perms;
         }
     }
     return perms;
